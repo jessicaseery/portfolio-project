@@ -3,7 +3,8 @@ const Homepage = () => {
 
     return (
 <div> 
-    <p>homepage content goes here</p>
+    <p>idk what to write</p>
+    <p>Creation - Dedication - Perfection</p>
 
 </div>
     )

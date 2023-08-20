@@ -3,7 +3,14 @@ const Contact = () => {
 
 return (
 <div>
-    <p>call me 514-415-9505</p>
+    <form>
+        First Name: <input type="text" placeholder='John'/>
+        Last Name: <input type="text" placeholder='Doe'/>
+        Email: <input type="email" placeholder='abc@gmail.com'/>
+        Additional Info:
+        <input type="text" placeholder='Say something...'/>
+    </form>
+    <p>*Please note that the contact form does not currently work, it is simply a placeholder. If you wish to contact me, send me an email!</p>
 </div>
 )
 }

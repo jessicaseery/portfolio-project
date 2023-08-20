@@ -5,22 +5,41 @@ const Header = () => {
 
     return (
         <div>
+            <TopLeft>
             <Name>Jessica Chiocchio Seery</Name>
-            <p>Web-developper</p>
-
-            <div>
-            <Link to="/">Home page</Link>
-            <Link to="/AboutMe" >About Me</Link>
-            <Link to="/projects">Projects</Link>
-            <Link to="/cv">CV</Link>
-            <Link to="/contact">Contact</Link>
-            </div>
+            <Text>Portfolio</Text>
+            </TopLeft>
+            <Navbar>
+            <Menuoption to="/">Home page</Menuoption>
+            <Menuoption to="/AboutMe" >About Me</Menuoption>
+            <Menuoption to="/projects">Projects</Menuoption>
+            <Menuoption to="/cv">CV</Menuoption>
+            <Menuoption to="/contact">Contact</Menuoption>
+            </Navbar>
         </div>
     )
 }
-
-const Name = styled.h1`
+const TopLeft = styled.div`
+color: grey;
+margin-top: -15px;
+margin-left: 15px;
+`
+const Name = styled.h4`
 color: grey;
 font-style: italic;
 `
+const Text = styled.p`
+margin-top: -20px;
+`
+const Navbar = styled.div`
+background-color: darkgray;
+display: flex;
+width: 100%;
+`
+const Menuoption = styled(Link)`
+margin-right: 5%;
+color: white;
+text-decoration: none;
+`
+
 export default Header

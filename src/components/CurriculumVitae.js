@@ -7,7 +7,7 @@ const CurriculumVitae = () => {
 </Body>
     )
 }
-const Body = styled.body`
+const Body = styled.div`
 background-color: pink;
 `
 export default CurriculumVitae

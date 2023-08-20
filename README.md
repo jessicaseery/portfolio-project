@@ -3,8 +3,7 @@
 For this Concordia University Bootcamp project, I created a 6 page protfolio website containing several of my previous assignements!
 
 ## currently working on
-- building the content of each page
-- making some pages 
+- making some pages render properly on different media formats
 
 ## things to add
 - loading status
@@ -14,6 +13,7 @@ For this Concordia University Bootcamp project, I created a 6 page protfolio web
 
 ## what I have accomplished so far
 - creating all the components
+- adding content to pages
 
 ## thought process
 - React Router, Routes, and Route to link all the components --> to link all my pages together I decided to use the clasic Route techniques as I am more familiar with these and greatly love using component routes to link together my work

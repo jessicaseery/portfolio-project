@@ -59,8 +59,7 @@ const AboutMe = () => {
             </tbody>
             </TableLD>
 </div>
-
-            
+<p>Here are some of my favourite things</p>
             
         </div>
     )

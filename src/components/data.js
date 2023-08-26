@@ -22,4 +22,12 @@ export const projects = {
         name: `Rony's Restaurant Menu`,
         description: `A webpage that displays all the contents and prices of a menu`,
     },
+    hangman: {
+        id: 'menu',
+        name: `Hangman Game`,
+    },
+    fruitshop: {
+        id: 'fruitshop',
+        name: 'Fruit Emporium Shop',
+    }
 };

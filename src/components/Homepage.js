@@ -13,7 +13,7 @@ const Homepage = () => {
 
     return (
 <Wrapper> 
-<ProfiePic src={me} alt='profile picture'/>
+<ProfilePic src={me} alt='profile picture'/>
 <Name>Jessica Chiocchio Seery</Name>
 <h3>Web Developper</h3>
 <ProgramLangbar>
@@ -30,16 +30,31 @@ const Homepage = () => {
 )
 }
 
+
 const Wrapper = styled.div`
+min-height: 100vh;
 text-align: center;
+background: linear-gradient(180deg, rgba(255,112,2,1) 0%, rgba(217,145,57,1) 56%, rgba(233,227,21,1) 100%);
+font-family: 'Titillium Web', sans-serif;
 `
-const ProfiePic = styled.img`
+const ProfilePic = styled.img`
 width: 250px;
 border-radius: 50%;
 margin-top: 7%;
 `
 const Name = styled.h1`
+color: black;
+padding-top: 15px;
+width: fit-content;
+margin: auto;
+cursor: pointer;
 
+&:hover {
+    color: white;
+    transition: 0.5s ease-out;
+    letter-spacing: 4px;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff;
+}
 `
 const ProgramLangbar = styled.div`
 

@@ -25,3 +25,4 @@ For this Concordia University Bootcamp project, I created a 6 page protfolio web
 - since the images weren't rendering I had to import them at the top of the appropriate component file. This really simplified adding images to my website!
 - Desktop first approach, it took quite a long time but I made sure each aspect of my website would be properly rendered on any device that views my website.
 - I decided to change the navigation menu to one that shows only if the user clicks on the hamburger icon. Once the user clicks on it the navigation menu will appear and the user will be able to navigate through pages or close the navigation bar to their liking
+- Created a data.js file to contain a variety of src links, ids and other information to call each desired item through .map() on their respective components

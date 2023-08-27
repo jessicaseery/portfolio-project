@@ -20,19 +20,19 @@ const AboutMe = () => {
     )
 }
 
-const Bio = styled.p`
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-`
 const Wrapper =  styled.div`
-min-height: 89vh;
+min-height: 100vh;
 background: linear-gradient(180deg, rgba(255,112,2,1) 0%, rgba(217,145,57,1) 56%, rgba(233,227,21,1) 100%);
 font-family: 'Titillium Web', sans-serif;
 padding-top: 1px;
 
 `
+const Bio = styled.p`
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+`
+
 const ProfessionalGoal = styled.div`
-max-width: 500px;
-min-width:fit-content;
+max-width: 400px;
 border: 1px grey solid;
 border-radius: 10px;
 text-align: center;
@@ -44,8 +44,7 @@ background-color: pink;
 border: 1px grey solid;
 border-radius: 10px;
 text-align: center;
-max-width: 500px;
-min-width:fit-content;
+max-width: 400px;
 padding: 10px;
 `
 

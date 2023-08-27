@@ -5,8 +5,8 @@ const CurriculumVitae = ({data}) => {
     return (
 <Wrapper>
     <Qualifications>
-        <Intro>Check out the certificates, awards, and diplomas I have acheieved so far! I definitely plan on continuing to learn and add onto this list with future achievements as well.</Intro>
-        <div>
+        <Intro>Experience</Intro>
+        <CVcontainer>
         {(Object.values(data)).map((language) => {
         return (
         <div key={language.id}>
@@ -14,22 +14,27 @@ const CurriculumVitae = ({data}) => {
         </div>
         )
         })}
-    </div>
+    </CVcontainer>
     </Qualifications>
     <div>
-        <button>My CV</button>
+        <CVlink>My CV</CVlink>
     </div>
     
 </Wrapper>
     )
 }
+
+const CVcontainer = styled.div`
+display: grid;
+grid-template-columns: auto auto auto;
+`
 const Wrapper = styled.div`
 min-height: 89vh;
 background: linear-gradient(180deg, rgba(255,112,2,1) 0%, rgba(217,145,57,1) 56%, rgba(233,227,21,1) 100%);
 font-family: 'Titillium Web', sans-serif;
 padding: 0px;
 `
-const Intro = styled.h3`
+const Intro = styled.h2`
 margin-top: 0px;
 color: white;
 `
@@ -41,5 +46,14 @@ margin-top: 15px;
 `
 const Qualifications = styled.div`
 text-align: center;
+`
+
+const CVlink = styled.button`
+width: 200px;
+height: 40px;
+color: orangered;
+font-weight: bold;
+font-style: italic;
+background-color: white;
 `
 export default CurriculumVitae

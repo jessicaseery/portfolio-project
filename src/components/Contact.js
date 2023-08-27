@@ -64,6 +64,7 @@ margin-left: 5%;
     border-color: rgb(211, 211, 211);
     border-width: 1px;
     border-style: solid;
+    margin-left: 1px;
 }
 `
 const Labelled = styled.label`
@@ -76,6 +77,7 @@ margin-bottom: 8px;
     justify-content: end;
     padding-right: 15%;
     margin-bottom: 8px;
+    
 }
 `
 export default Contact

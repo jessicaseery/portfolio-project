@@ -102,7 +102,7 @@ z-index: 10;
 
 &:hover {
     color: white;
-    background-color: orange;
+    background-color: rgb(255,77,0);
 }
 `
 

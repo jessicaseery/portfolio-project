@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
+import React, {useState} from 'react'
 import me from './me.jpg'
 import htmllogo from './html.png'
 import csslogo from './css.png'
@@ -8,29 +9,83 @@ import pythonlogo from './python.png'
 import phplogo from './php.png'
 import csharp from './csharp.png'
 import cplusplus from './cplusplus.png'
+import purpleflower from './purpleflower.png'
+import blueflower from './blueflower.png'
+import redflower from './redflower.png'
+import whiteflower from './whiteflower.png'
+import sunflower from './sunflower.png'
+import beachroseorange from './beachroseorange.png'
+import whitelily from './whitelily.png'
+import pinkcarnation from './pinkcarnation.png'
+import purplerose from './purplerose.png'
+import redtropical from './redtrpoical.png'
+import yellowdaisy from './yellowdaisy.png'
 
 const Homepage = () => {
+const [flowerPositions, setFlowerPositions] = useState([]);
 
-    return (
-<Wrapper> 
-<ProfilePic src={me} alt='profile picture'/>
-<Name>Jessica Chiocchio Seery</Name>
-<h3>Web Developper</h3>
-<ProgramLangbar>
-    <Language src={htmllogo} alt="HTML"/>
-    <Language src={csslogo} alt="CSS"/>
-    <Language src={javascriptlogo} alt="JavaScript"/>
-    <Language src={reactlogo} alt="React"/>
-    <Language src={pythonlogo} alt="Python"/>
-    <Language src={phplogo} alt="PHP"/>
-    <Language src={csharp} alt="C#"/>
-    <Language src={cplusplus} alt="C++"/>
+const handleClick = (event) => {
+    const x = event.clientX;
+    const y = event.clientY + window.scrollY;
+    const randomFlower = floweroptions[Math.floor(Math.random() * floweroptions.length)];
+    setFlowerPositions([...flowerPositions, { x, y, flower: randomFlower }]);
+};
+
+const floweroptions = [
+    purpleflower ,
+    redflower ,
+    blueflower ,
+    whiteflower,
+    sunflower,
+    beachroseorange,
+    whitelily,
+    pinkcarnation,
+    purplerose,
+    redtropical,
+    yellowdaisy,
+];
+
+return (
+    <Wrapper onClick={handleClick}>
+        <ProfilePic src={me} alt="profile picture" />
+        <Name>Jessica Chiocchio Seery</Name>
+        <h3>Web Developer</h3>
+    <ProgramLangbar>
+        <Language src={htmllogo} alt="HTML" />
+        <Language src={csslogo} alt="CSS" />
+        <Language src={javascriptlogo} alt="JavaScript" />
+        <Language src={reactlogo} alt="React" />
+        <Language src={pythonlogo} alt="Python" />
+        <Language src={phplogo} alt="PHP" />
+        <Language src={csharp} alt="C#" />
+        <Language src={cplusplus} alt="C++" />
     </ProgramLangbar>
-</Wrapper>
-)
+    {flowerPositions.map((position, index) => (
+        <Flower key={index} src={position.flower} style={{ top: position.y - 10, left: position.x - 10 }} alt="Flower" />
+    ))}
+    <p>click anywhere on this page to add a flower! click here or refresh to remove them!</p>
+    </Wrapper>
+    );
+};
+
+const growFlower = keyframes`
+0% {
+    width: 0;
+    height: 0;
 }
+100% {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+`;
 
-
+const Flower = styled.img`
+width: 100px;
+height: 100px;
+position: absolute;
+animation: ${growFlower} 0.5s ease-in-out forwards;
+`;
 const Wrapper = styled.div`
 min-height: 100vh;
 text-align: center;

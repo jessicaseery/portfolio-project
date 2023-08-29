@@ -4,37 +4,47 @@ import menulines from './burgermenuicon.png'
 import React, {useState} from "react"
 import sun from './sunrays.png'
 
-const Header = () => {
+const Header = ({ isDarkMode, setIsDarkMode }) => {
     const [isNavigationVisible, setNavigationVisible] = useState(false);
+    const [darkModeEnabled, setDarkMode] = useState(false); 
+
 
     const handleClick = () => {
         setNavigationVisible(!isNavigationVisible);
 }
+
+const handleDarkModeToggle = () => {
+    setIsDarkMode(!darkModeEnabled);
+    setDarkMode(!darkModeEnabled);
+};
         
     return (
-        <Wrapper>
+        <Wrapper isDarkMode={isDarkMode}>
             
             <TopLeft>
-            <Name>Jessica Chiocchio Seery</Name>
+            <Name isDarkMode={isDarkMode}>Jessica Chiocchio Seery</Name>
             <Text>Portfolio</Text>
-            <Sun src={sun} alt="sun ray"/>
+            <Sun src={sun} alt="sun ray" onClick={handleDarkModeToggle}/>
             </TopLeft>
             <Dropdown src={menulines} alt="dropdown" onClick={handleClick}/>
-            <Navbar isVisible={isNavigationVisible}>
-            <Menuoption to="/">Home</Menuoption>
-            <Menuoption to="/AboutMe" >About Me</Menuoption>
-            <Menuoption to="/projects">Projects</Menuoption>
-            <Menuoption to="/cv">CV</Menuoption>
-            <Menuoption to="/contact">Contact</Menuoption>
+            <Navbar isvisible={isNavigationVisible}>
+            <Menuoption to="/" isDarkMode={isDarkMode}>Home</Menuoption>
+            <Menuoption to="/AboutMe" isDarkMode={isDarkMode}>About Me</Menuoption>
+            <Menuoption to="/projects" isDarkMode={isDarkMode}>Projects</Menuoption>
+            <Menuoption to="/cv" isDarkMode={isDarkMode}>CV</Menuoption>
+            <Menuoption to="/contact" isDarkMode={isDarkMode}>Contact</Menuoption>
             </Navbar>
         </Wrapper>
     )
 }
 const Wrapper = styled.div`
-background-color: darkorange;
-border-bottom: solid black 2px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: ${(props) => (props.isDarkMode ? "#FFFFFF" : "#000000")};
 padding-bottom: 1px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 padding-top: 1px;
+background-color: ${(props) => (props.isDarkMode ? "#000" : "#FF8C00")};
 `
 const TopLeft = styled.div`
 color: grey;
@@ -51,10 +61,9 @@ z-index: 7;
 position: relative;
 `
 const Name = styled.h4`
-color: black;
+color: ${(props) => (props.isDarkMode ? "#FFFFFF" : "#000000")};
 font-style: italic;
-
-`
+`;
 
 const Sun = styled.img`
 text-align: center;
@@ -71,7 +80,7 @@ animation: spin 50s linear infinite;
 from {
     transform: rotate(0deg);
 }
-  to {
+to {
     transform: rotate(360deg);
 }
 }
@@ -80,9 +89,10 @@ from {
 const Text = styled.p`
 margin-top: -20px;
 color: white;
+font-style: italic;
 `
 const Navbar = styled.div`
-display: ${(props) => (props.isVisible ? "flex" : "none")};
+display: ${(props) => (props.isvisible ? "flex" : "none")};
 min-width: 100%;
 max-width: fit-content;
 font-family: 'Titillium Web', sans-serif;
@@ -102,7 +112,8 @@ z-index: 10;
 
 &:hover {
     color: white;
-    background-color: rgb(255,77,0);
+    /* background-color: rgb(255,77,0); */
+    background-color: ${(props) => (props.isDarkMode ? "#7B68EE" : "#FF3300")};
 }
 `
 

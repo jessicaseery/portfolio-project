@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import React, {useState} from 'react'
 
 
-const Projects = ({data}) => {
+const Projects = ({ data, isDarkMode }) => {
     const [activeImage, setActiveImage] = useState(null)
     const [projectDescribe, setProjectDescribe] = useState(null)
 
@@ -15,8 +15,8 @@ const Projects = ({data}) => {
     }
 
     return (
-<Wrapper>
-    <Text>View my projects from oldest to most recent! Click on the project for more information!</Text>
+<Wrapper isDarkMode={isDarkMode}>
+    <Text isDarkMode={isDarkMode}>View my projects from oldest to most recent! Click on the project for more information!</Text>
     
     <PictureContainter>
         {(Object.values(data)).map((exercise) => {
@@ -28,7 +28,7 @@ const Projects = ({data}) => {
         })}
     </PictureContainter>
     <Popout show={activeImage !== null} onClick={closepopout}>
-        <Poptext key="clickout">{projectDescribe}  ----- click anywhere to go back to the project page.</Poptext>
+        <Poptext key="clickout">{projectDescribe}  - click anywhere to go back.</Poptext>
         <PoppedImg src={activeImage} alt="Full-Screen" />
         
     </Popout>
@@ -79,10 +79,13 @@ max-width: 90%;
 max-height: 90%;
 `;
 const Wrapper = styled.div`
-padding-top: 1px;
-min-height: 100vh;
-text-align: center;
-background: linear-gradient(180deg, rgba(255,112,2,1) 0%, rgba(217,145,57,1) 56%, rgba(233,227,21,1) 100%);
-font-family: 'Titillium Web', sans-serif;
-`
+background: ${(props) =>
+    props.isDarkMode
+    ? 'linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgb(27, 27, 27) 20%, rgb(42, 30, 54) 40%, rgb(58, 33, 82) 60%, rgb(73, 35, 109) 80%, rgb(88, 38, 136) 100% )'
+    : 'linear-gradient(180deg, rgba(255,112,2,1) 0%, rgba(217,145,57,1) 56%, rgba(233,227,21,1) 100%)'};
+  padding-top: 1px;
+  min-height: 100vh;
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+`;
 export default Projects

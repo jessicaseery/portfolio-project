@@ -49,7 +49,7 @@ return (
     <Wrapper onClick={handleClick}>
         <ProfilePic src={me} alt="profile picture" />
         <Name>Jessica Chiocchio Seery</Name>
-        <h3>Web Developer</h3>
+        <Title>Web Developer</Title>
     <ProgramLangbar>
         <Language src={htmllogo} alt="HTML" />
         <Language src={csslogo} alt="CSS" />
@@ -63,7 +63,7 @@ return (
     {flowerPositions.map((position, index) => (
         <Flower key={index} src={position.flower} style={{ top: position.y - 10, left: position.x - 10 }} alt="Flower" />
     ))}
-    <p>click anywhere on this page to add a flower! click here or refresh to remove them!</p>
+    <p>Click anywhere on this page to add a flower! Refresh the page to remove them!</p>
     </Wrapper>
     );
 };
@@ -86,16 +86,21 @@ height: 100px;
 position: absolute;
 animation: ${growFlower} 0.5s ease-in-out forwards;
 `;
+const Title = styled.h3`
+font-style: italic;
+`
 const Wrapper = styled.div`
 min-height: 100vh;
 text-align: center;
 background: linear-gradient(180deg, rgba(255,112,2,1) 0%, rgba(217,145,57,1) 56%, rgba(233,227,21,1) 100%);
-font-family: 'Titillium Web', sans-serif;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+cursor: pointer
 `
 const ProfilePic = styled.img`
 width: 250px;
 border-radius: 50%;
 margin-top: 7%;
+box-shadow: 1px 3px 30px rgb(255,77,0);
 `
 const Name = styled.h1`
 color: black;

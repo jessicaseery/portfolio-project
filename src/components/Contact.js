@@ -18,7 +18,7 @@ return (
 const Wrapper =  styled.div`
 min-height: 100vh;
 background: linear-gradient(180deg, rgba(255,112,2,1) 0%, rgba(217,145,57,1) 56%, rgba(233,227,21,1) 100%);
-font-family: 'Titillium Web', sans-serif;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 padding-top: 50px;
 
 `

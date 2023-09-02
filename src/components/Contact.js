@@ -1,8 +1,12 @@
 import styled from 'styled-components'
-const Contact = () => {
+import React from 'react'
+import email from './email.png'
+import phone from './phone.png'
+
+const Contact = ({isdarkmode}) => {
 
 return (
-<Wrapper>
+<Wrapper isdarkmode={isdarkmode}>
     <FillForm>
         <Title>Contact Me!</Title>
         <Labelled>First Name: <Blank type="text" placeholder='John'/></Labelled>
@@ -10,17 +14,53 @@ return (
         <Labelled>Email: <Blank type="email" placeholder='abc@gmail.com'/></Labelled>
         <Labelled>Additional Info: <Blank type="text" placeholder='Say something...'/></Labelled>
     </FillForm>
-    <Sidenote>*Please note that the contact form does not currently work, it is simply a placeholder. If you wish to contact me, send me an email or use the icons above to reach me!</Sidenote>
+    <ContactLinks>
+        
+            <ContactText key="emailinfo" isdarkmode={isdarkmode}><Email src={email} alt="email logo" isdarkmode={isdarkmode}/> : Jessica13.Seery@gmail.com</ContactText>
+            <ContactText key="phonenumber" isdarkmode={isdarkmode}><Phone src={phone} alt="phone logo" isdarkmode={isdarkmode}/> : 514-415-9505</ContactText>
+    
+    </ContactLinks>
+    <Sidenote isdarkmode={isdarkmode}>*Please note that the contact form does not currently work, it is simply a placeholder. If you wish to contact me, send me an email or call me!</Sidenote>
 </Wrapper>
 )
 }
 
+const ContactText = styled.p`
+padding-top: 30px;
+margin-top: -3px;
+color: ${(props) =>
+    props.isdarkmode === 'true'
+    ? 'white'
+    : 'black'};
+
+`
 const Wrapper =  styled.div`
 min-height: 100vh;
-background: linear-gradient(180deg, rgba(255,112,2,1) 0%, rgba(217,145,57,1) 56%, rgba(233,227,21,1) 100%);
+background: ${(props) =>
+    props.isdarkmode === 'true'
+    ? 'linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgb(27, 27, 27) 20%, rgb(42, 30, 54) 40%, rgb(58, 33, 82) 60%, rgb(73, 35, 109) 80%, rgb(88, 38, 136) 100% )'
+    : 'linear-gradient(180deg, rgba(255, 112, 2, 1) 0%, rgba(217, 145, 57, 1) 56%, rgba(233, 227, 21, 1) 100%)'};
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 padding-top: 50px;
 
+`
+const ContactLinks = styled.div`
+margin-top: 30px;
+margin: 0 auto;
+text-align: center;
+`
+const Email = styled.img`
+width: 20px;
+height: 15px;
+margin-right: 10px;
+filter: ${(props) => (props.isdarkmode === "true" ? "invert(100%)" : "invert(0%)")};
+`
+
+const Phone = styled.img`
+width: 20px;
+height: 15px;
+margin-right: 10px;
+filter: ${(props) => (props.isdarkmode === "true" ? "invert(100%)" : "invert(0%)")};
 `
 const FillForm = styled.form`
 background-color: whitesmoke;
@@ -51,7 +91,10 @@ const Title = styled.h1`
 margin-top: -1px;
 `
 const Sidenote = styled.p`
-color:white;
+color: ${(props) =>
+    props.isdarkmode === 'true'
+    ? 'white'
+    : 'black'};
 text-align: center;
 margin-top: 60px;
 `

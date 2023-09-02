@@ -2,17 +2,17 @@ import styled from 'styled-components'
 import pdf from './JESSICASEERYCV.pdf'
 import React, {useState} from 'react'
 
-const CurriculumVitae = ({data}) => {
-    const [activeImage, setActiveImage] = useState(null)
+const CurriculumVitae = ({data, isdarkmode}) => {
+    const [activeImage, setActiveImage] = useState('false')
     const handleClick = (imageSrc) => {
         setActiveImage(imageSrc);
     }
     const closepopout = () => {
-        setActiveImage(null)
+        setActiveImage('false')
     }
 
     return (
-<Wrapper>
+<Wrapper isdarkmode={isdarkmode}>
     <Qualifications>
         <Intro>Experience</Intro>
         <Info>Click on a certificate to view it in a bigger format!</Info>
@@ -25,14 +25,14 @@ const CurriculumVitae = ({data}) => {
         )
         })}
     </CVcontainer>
-    <Popout show={activeImage !== null} onClick={closepopout}>
+    <Popout show={activeImage !== 'false' ? 'true' : 'false'} onClick={closepopout}>
         <Poptext key="clickout">click anywhere to go back.</Poptext>
         <PoppedImg src={activeImage} alt="Full-Screen" />
         
     </Popout>
     </Qualifications>
     <CV>
-        <CVlink href={pdf} download="JessicaSeeryCV.pdf">Download my CV</CVlink>
+        <CVlink href={pdf} download="JessicaSeeryCV.pdf" isdarkmode={isdarkmode}>Download my CV</CVlink>
     </CV>
     
 </Wrapper>
@@ -45,7 +45,7 @@ left: 0;
 width: 100%;
 height: 100%;
 background: rgba(0, 0, 0, 0.7);
-display: ${(props) => (props.show ? 'block' : 'none')};
+display: ${(props) => (props.show === 'true' ? 'block' : 'none')};
 z-index: 18;
 `
 const Poptext = styled.p`
@@ -81,7 +81,10 @@ height: 100%;
 }
 `
 const Wrapper = styled.div`
-background: linear-gradient(180deg, rgba(255,112,2,1) 0%, rgba(217,145,57,1) 56%, rgba(233,227,21,1) 100%);
+background: ${(props) =>
+    props.isdarkmode === 'true'
+    ? 'linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgb(27, 27, 27) 20%, rgb(42, 30, 54) 40%, rgb(58, 33, 82) 60%, rgb(73, 35, 109) 80%, rgb(88, 38, 136) 100% )'
+    : 'linear-gradient(180deg, rgba(255, 112, 2, 1) 0%, rgba(217, 145, 57, 1) 56%, rgba(233, 227, 21, 1) 100%)'};
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 padding: 0px;
 height: 100%;
@@ -117,9 +120,12 @@ padding: 20px;
 margin-bottom:20px;
 border-radius: 10px;
 border: 2px solid black;
-color: orangered;
 font-weight: bold;
 font-style: italic;
 background-color: white;
+color: ${(props) =>
+    props.isdarkmode === 'true'
+    ? 'purple'
+    : 'orangered'};
 `
 export default CurriculumVitae

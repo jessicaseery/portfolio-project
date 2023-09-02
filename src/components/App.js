@@ -7,21 +7,25 @@ import Projects from './Projects';
 import Homepage from './Homepage';
 import CurriculumVitae from './CurriculumVitae';
 import Contact from './Contact';
-import {programmingLanguages, projects} from './data'
+import {floweroptions, staroptions, programmingLanguages, projects} from './data'
 
 
 
 const App = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isdarkmode, setisdarkmode] = useState('false');
+
+  const toggleDarkMode = () => {
+    setisdarkmode(isdarkmode === 'false' ? 'true' : 'false'); 
+  };
   return (
     <Router>
-      <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
+      <Header isdarkmode={isdarkmode} toggleDarkMode={toggleDarkMode} />
         <Routes>
-          <Route path="/" element={<Homepage isDarkMode={isDarkMode} />}/>
-          <Route path="/AboutMe" element={<AboutMe isDarkMode={isDarkMode} />} />
-          <Route path="/projects" element={<Projects data={projects} isDarkMode={isDarkMode}/>} />
-          <Route path="/cv" element ={<CurriculumVitae data={programmingLanguages} isDarkMode={isDarkMode}/>}/>
-          <Route path="/contact" element={<Contact/>}/>
+          <Route path="/" element={<Homepage flowers={floweroptions} stars={staroptions} isdarkmode={isdarkmode} />}/>
+          <Route path="/AboutMe" element={<AboutMe isdarkmode={isdarkmode} />} />
+          <Route path="/projects" element={<Projects data={projects} isdarkmode={isdarkmode}/>} />
+          <Route path="/cv" element ={<CurriculumVitae data={programmingLanguages} isdarkmode={isdarkmode}/>}/>
+          <Route path="/contact" element={<Contact isdarkmode={isdarkmode} />}/>
         </Routes>
       </Router>
   );

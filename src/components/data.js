@@ -12,6 +12,38 @@ import certiLogoScratch from './certificateLogoandScratch.png'
 import diplomaAppDesign from './diplomaAppDesign.png'
 import certiAdobe from './CertificateAdobe.png'
 import awardOfMerit from './AwardofMerit.png'
+import purpleflower from './purpleflower.png'
+import blueflower from './blueflower.png'
+import redflower from './redflower.png'
+import whiteflower from './whiteflower.png'
+import sunflower from './sunflower.png'
+import beachroseorange from './beachroseorange.png'
+import whitelily from './whitelily.png'
+import pinkcarnation from './pinkcarnation.png'
+import purplerose from './purplerose.png'
+import redtropical from './redtrpoical.png'
+import yellowdaisy from './yellowdaisy.png'
+import stars from './stars.png'
+import trailstars from './trailstars.png'
+
+export const floweroptions = [
+    purpleflower ,
+    redflower ,
+    blueflower ,
+    whiteflower,
+    sunflower,
+    beachroseorange,
+    whitelily,
+    pinkcarnation,
+    purplerose,
+    redtropical,
+    yellowdaisy,
+];
+
+export const staroptions = [
+    stars,
+    trailstars,
+];
 
 export const programmingLanguages = {
     htmlcss: {

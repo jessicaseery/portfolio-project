@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import React, {useState} from 'react'
 
 
-const Projects = ({ data, isDarkMode }) => {
-    const [activeImage, setActiveImage] = useState(null)
+const Projects = ({ data, isdarkmode }) => {
+    const [activeImage, setActiveImage] = useState('false')
     const [projectDescribe, setProjectDescribe] = useState(null)
 
     const handleClick = (imageSrc, description) => {
@@ -11,23 +11,23 @@ const Projects = ({ data, isDarkMode }) => {
         setProjectDescribe(description)
     }
     const closepopout = () => {
-        setActiveImage(null)
+        setActiveImage('false')
     }
 
     return (
-<Wrapper isDarkMode={isDarkMode}>
-    <Text isDarkMode={isDarkMode}>View my projects from oldest to most recent! Click on the project for more information!</Text>
+<Wrapper isdarkmode={isdarkmode}>
+    <Text isdarkmode={isdarkmode}>View my projects from oldest to most recent! Click on the project for more information!</Text>
     
     <PictureContainter>
         {(Object.values(data)).map((exercise) => {
         return (
         <div key={exercise.id}>
-        <ProjectImg src={exercise.imageSrc} onClick={() => handleClick(exercise.imageSrc, exercise.description)}/>
+        <ProjectImg src={exercise.imageSrc} isdarkmode={isdarkmode} onClick={() => handleClick(exercise.imageSrc, exercise.description)}/>
         </div>
         )
         })}
     </PictureContainter>
-    <Popout show={activeImage !== null} onClick={closepopout}>
+    <Popout show={activeImage !== 'false' ? 'true' : 'false'} onClick={closepopout}>
         <Poptext key="clickout">{projectDescribe}  - click anywhere to go back.</Poptext>
         <PoppedImg src={activeImage} alt="Full-Screen" />
         
@@ -42,14 +42,20 @@ grid-template-columns: auto auto;
 `
 const ProjectImg = styled.img`
 width: 90%;
-box-shadow: 1px 1px 10px red;
+box-shadow:  ${(props) =>
+    props.isdarkmode === 'true'
+    ? '1px 1px 10px purple'
+    : '1px 1px 10px red'};
 margin-bottom: 10px;
 
 @media (max-width: 600px) {
 width: 95%;
 height: 90%;
 border: 2px black solid;
-box-shadow: 1px 1px 5px pink;
+box-shadow:  ${(props) =>
+    props.isdarkmode === 'true'
+    ? '1px 1px 5px purple'
+    : '1px 1px 5px red'};
 }
 
 `
@@ -64,7 +70,7 @@ left: 0;
 width: 100%;
 height: 100%;
 background: rgba(0, 0, 0, 0.7);
-display: ${(props) => (props.show ? 'block' : 'none')};
+display: ${(props) => (props.show === 'true' ? 'block' : 'none')};
 z-index: 18;
 `
 const Poptext = styled.p`
@@ -80,12 +86,12 @@ max-height: 90%;
 `;
 const Wrapper = styled.div`
 background: ${(props) =>
-    props.isDarkMode
+    props.isdarkmode === 'true'
     ? 'linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgb(27, 27, 27) 20%, rgb(42, 30, 54) 40%, rgb(58, 33, 82) 60%, rgb(73, 35, 109) 80%, rgb(88, 38, 136) 100% )'
-    : 'linear-gradient(180deg, rgba(255,112,2,1) 0%, rgba(217,145,57,1) 56%, rgba(233,227,21,1) 100%)'};
-  padding-top: 1px;
-  min-height: 100vh;
-  text-align: center;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    : 'linear-gradient(180deg, rgba(255, 112, 2, 1) 0%, rgba(217, 145, 57, 1) 56%, rgba(233, 227, 21, 1) 100%)'};
+padding-top: 1px;
+min-height: 100vh;
+text-align: center;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 `;
 export default Projects

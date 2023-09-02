@@ -1,4 +1,5 @@
 import himympic from '../components/HIMYM.PNG'
+import nyancat from './nyancat.png'
 import menupic from './menu.png'
 import fruitshop from './fruitshop.png'
 import hangmanpic from './hangmangame.png'
@@ -85,6 +86,12 @@ export const projects = {
         name: 'Sign Up',
         description: `A sign up form that alerts the user when a field is incorrectly filled and properly submits when there is no error. There is also a feature that confirms the password (which must contain a certain amount of characters) is the same in both password inputs.`,
         imageSrc: signuppic,
+    },
+    nyancat: {
+        id: 'nyancat',
+        name: 'Nyan Cat',
+        description: 'A game where enemies are falling from the sky. The user must dodge them to keep earning points. There is a lives system using oop, a variety of music per skin option along with matching characters and backgrounds.',
+        imageSrc: nyancat,
     },
     menu: {
         id: 'menu',
